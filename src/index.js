@@ -80,22 +80,16 @@ function onInput(event) {
 
     let countriesListMarkup = [];
 
-    countries.map(country => {
+    countries.map(({ name, flags }) => {
       
-      const {
-        name,
-        capital,
-        population,
-        flags, 
-        languages
-      } = country
-
-      countriesListMarkup.push(`
+      const markup = `
       <li class="country-item">
         <img src="${flags.svg}" alt="${name.common}">
         <h2 class="country-item__title"> ${name.common}</h2>
       </li>
-      `);
+      `
+
+      countriesListMarkup.push(markup);
     })
 
     refs.countryList.insertAdjacentHTML('beforeend',countriesListMarkup.join(''))
