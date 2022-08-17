@@ -1,9 +1,6 @@
 import './css/styles.css';
 import API from './fetchCountries';
 
-import countryCardTemplate from './template/country-card.hbs'; 
-import countriesListTemplate from './template/country-info.hbs'; 
-
 // библиотека notiflix
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
@@ -64,7 +61,18 @@ function onInput(event) {
       languages
     } = country
 
-    const markup = countryCardTemplate(country);
+    const markup = `
+    <div class="card">
+  <img class="card-img" src="${flags.svg}" alt="${name.official}">
+
+  <div class="card-body">    
+    <h2 class="card-title">Официальное название: ${name.official}</h2>
+    <p class="card-text">Столица: ${capital}</p>
+    <p class="card-text">Население: ${population}</p>
+    <p class="card-text">Языки: ${Object.values(languages).join(', ')}
+    </p>
+  </div>
+</div>`;
     refs.countryCard.insertAdjacentHTML('beforeend',markup)
   }
 
@@ -82,7 +90,12 @@ function onInput(event) {
         languages
       } = country
 
-      countriesListMarkup.push(countriesListTemplate(country));
+      countriesListMarkup.push(`
+      <li class="country-item">
+        <img src="${flags.svg}" alt="${name.common}">
+        <h2 class="country-item__title"> ${name.common}</h2>
+      </li>
+      `);
     })
 
     refs.countryList.insertAdjacentHTML('beforeend',countriesListMarkup.join(''))
