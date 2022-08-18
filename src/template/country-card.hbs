@@ -1,0 +1,14 @@
+<div class="card">
+  <img class="card-img" src="{{flags.svg}}" alt="{{name.official}}">
+
+  <div class="card-body">    
+    <h2 class="card-title">Официальное название:   {{name.official}}</h2>
+    <p class="card-text">Столица:  {{capital}}</p>
+    <p class="card-text">Население:  {{population}}</p>
+    <p class="card-text">Языки:  
+    {{#each languages}}
+      {{this}},
+    {{/each}}
+    </p>
+  </div>
+</div>
