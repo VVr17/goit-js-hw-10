@@ -4,6 +4,7 @@ import API from './fetchCountries';
 // библиотека notiflix
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
+import Tpl from './template/country-card.hbs';
 
 const DEBOUNCE_DELAY = 300;
 const { fetchCountries } = API;
